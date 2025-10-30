@@ -1,4 +1,8 @@
 #pragma once
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 enum AccountTypes {
 	Checking,
@@ -8,14 +12,17 @@ enum AccountTypes {
 class Account
 {
 public:
-	Account(AccountTypes, float);
+	Account(string _type, string _name, float);
 	~Account();
-	AccountTypes GetType();
+	string GetType();
 	void SetType(AccountTypes);
-	float GetAmount();
-	void SetAmount(float);
+	string GetName();
+	void SetName(string);
+	float GetCurrency();
+	void SetCurrency(float);
 private:
 	AccountTypes type;
-	float amount;
+	string name;
+	float currency;
 };
 

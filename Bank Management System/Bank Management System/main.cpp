@@ -23,9 +23,14 @@ Why it’s good: Demonstrates data persistence and OOP.*/
   2c) Update will allow the user to update one
       of the accounts information
   2d) Delete will destroy the selected account.
+
+  Ask whether the user has a bank account
 */
 
-int main() {
+#include "App.h"
 
+int main() {
+    // Run the bank management program
+    App();
 	return 0;
 }
