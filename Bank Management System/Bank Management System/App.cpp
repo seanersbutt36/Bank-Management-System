@@ -52,6 +52,7 @@ void App::CreateAccount() {
 	ModifyName();
 	ModifyCurrency();
 
+	// ERROR: Index is not being set correctly in ModifyType().
 	Account acc(selectingTypes[index], newName, newCurrency);
 	accDB.AddAccount(acc);
 }
