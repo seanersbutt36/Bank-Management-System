@@ -1,5 +1,11 @@
 #include "Account.h"
 
+Account::Account() {
+	type = Checking;
+	name = "Default";
+	currency = 0.0f;
+}
+
 Account::Account(string _type, string _name, float _currency) {
 	if (_type == "Checking") {
 		type = Checking;

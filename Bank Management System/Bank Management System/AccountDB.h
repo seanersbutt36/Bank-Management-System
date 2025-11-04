@@ -1,12 +1,18 @@
 #pragma once
 #include<map>
+#include <string>
 #include "Account.h"
+
+using namespace std;
 
 class AccountDB
 {
 public:
-	void AddAccount();
+	AccountDB();
+	void AddAccount(Account);
+	void DisplayAccounts();
+	bool FitInTheBox(string, int);
 private:
-	std::map<std::string, Account> dictionary;
+	map<string, Account> accounts;
 };
 

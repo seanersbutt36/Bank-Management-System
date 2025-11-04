@@ -12,6 +12,7 @@ enum AccountTypes {
 class Account
 {
 public:
+	Account();
 	Account(string _type, string _name, float);
 	~Account();
 	string GetType();

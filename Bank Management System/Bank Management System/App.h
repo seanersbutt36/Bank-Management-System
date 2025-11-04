@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <iomanip>
+#include "AccountDB.h"
 
 using namespace std;
 
@@ -16,6 +18,7 @@ public:
 	void ModifyName();
 	void ModifyCurrency();
 private:
+	AccountDB accDB;
 	int inputInt;
 	string inputStr;
 	float inputFlt;

@@ -2,6 +2,10 @@
 #include "Account.h"
 
 App::App() {
+	inputStr = "";
+	inputFlt = 0.0f;
+	index = 0;
+
 	while (inputInt != 5) {
 		cout << "1.  Create an account" << endl
 			<< "2.  Read an account" << endl
@@ -43,20 +47,18 @@ void App::InputSystem(int _input) {
 void App::CreateAccount() {
 	bool nextStep = false;
 	
-	cout << "Creating an account..." << endl;
-
+	cout << endl;
 	ModifyType();
 	ModifyName();
 	ModifyCurrency();
 
 	Account acc(selectingTypes[index], newName, newCurrency);
-	cout << endl << acc.GetName() << endl;
-	cout << acc.GetType() << endl;
-	cout << acc.GetCurrency() << endl << endl;
+	accDB.AddAccount(acc);
 }
 
 void App::ReadAccount() {
-	cout << "Reading an account..." << endl;
+	cout << endl;
+	accDB.DisplayAccounts();
 }
 
 void App::UpdateAccount() {
@@ -72,13 +74,14 @@ void App::ModifyType() {
 	cout << "What type of account are you creating?" << endl
 		<< "1.  Checking" << endl
 		<< "2.  Saving" << endl;
+	cout << "Input Here: ";
 	cin >> inputInt;
 
-	while (inputInt < 0 && inputInt > 3) {
-		if (inputInt = 1) {
+	while (inputInt < 1 && inputInt > 2) {
+		if (inputInt == 1) {
 			index = 0;
 		}
-		else if (inputInt = 2) {
+		else if (inputInt == 2) {
 			index = 1;
 		}
 		else {
@@ -88,13 +91,16 @@ void App::ModifyType() {
 }
 
 void App::ModifyName() {
+	cin.ignore();
 	cout << "Enter a name for the account:" << endl;
-	getline(cin, inputStr); // SMALL STRING CAPACITY
+	cout << "Input Here: ";
+	getline(cin, inputStr);
 	newName = inputStr;
 }
 
 void App::ModifyCurrency() {
 	cout << "Enter an amount you'd like to deposit:" << endl;
+	cout << "Input Here: ";
 	cin >> inputFlt;
 	newCurrency = inputFlt;
 }
