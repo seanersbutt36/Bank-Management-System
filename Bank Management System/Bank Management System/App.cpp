@@ -2,20 +2,19 @@
 #include "Account.h"
 
 App::App() {
-	inputStr = "";
-	inputFlt = 0.0f;
+	int _inputInt = 0;
 	index = 0;
 
-	while (inputInt != 5) {
+	while (_inputInt != 5) {
 		cout << "1.  Create an account" << endl
 			<< "2.  Read an account" << endl
 			<< "3.  Update an account" << endl
 			<< "4.  Delete an account" << endl
 			<< "5.  Quit" << endl;
 		cout << "Input Here: ";
-		cin >> inputInt;
+		cin >> _inputInt;
 		cout << endl;
-		InputSystem(inputInt);
+		InputSystem(_inputInt);
 		cout << endl;
 		cout << "=======================" << endl << endl;
 	}
@@ -48,11 +47,13 @@ void App::CreateAccount() {
 	bool nextStep = false;
 	
 	cout << endl;
+	cout << "What type of account are you creating?" << endl;
 	ModifyType();
+	cout << "Enter a name for the account:" << endl;
 	ModifyName();
+	cout << "Enter an amount you'd like to deposit:" << endl;
 	ModifyCurrency();
 
-	// ERROR: Index is not being set correctly in ModifyType().
 	Account acc(selectingTypes[index], newName, newCurrency);
 	accDB.AddAccount(acc);
 }
@@ -72,18 +73,25 @@ void App::DeleteAccount() {
 }
 
 void App::ModifyType() {
-	cout << "What type of account are you creating?" << endl
-		<< "1.  Checking" << endl
-		<< "2.  Saving" << endl;
-	cout << "Input Here: ";
-	cin >> inputInt;
+	int _inputInt = 0;
+	bool selected = false; // Determine if the user has selected one of the options.
 
-	while (inputInt < 1 && inputInt > 2) {
-		if (inputInt == 1) {
-			index = 0;
+	// Dipslay the user's options.
+	cout << "1.  Checking" << endl
+		 << "2.  Saving" << endl;
+
+	// SUGGESTION: Add an opt out option.
+	// Keep looping until the users input one of the option.
+	while (selected == false) {
+		cout << "Input Here: ";
+		cin >> _inputInt;
+		if (_inputInt == 1) {
+			index = 0;	// Selected checking account
+			selected = true;
 		}
-		else if (inputInt == 2) {
-			index = 1;
+		else if (_inputInt == 2) {
+			index = 1;	// Selected saving account
+			selected = true;
 		}
 		else {
 			cout << "Please pick one of the options." << endl;
@@ -92,16 +100,13 @@ void App::ModifyType() {
 }
 
 void App::ModifyName() {
+	// Clear the buffer.
 	cin.ignore();
-	cout << "Enter a name for the account:" << endl;
 	cout << "Input Here: ";
-	getline(cin, inputStr);
-	newName = inputStr;
+	getline(cin, newName);
 }
 
 void App::ModifyCurrency() {
-	cout << "Enter an amount you'd like to deposit:" << endl;
-	cout << "Input Here: ";
-	cin >> inputFlt;
-	newCurrency = inputFlt;
+	cout << "Input Here: $";
+	cin >> newCurrency;
 }

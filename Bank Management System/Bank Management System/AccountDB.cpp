@@ -13,7 +13,7 @@ void AccountDB::DisplayAccounts() {
 		for (auto& pair : accounts) {
 			// Check if the account name can fit in the box.
 			if (FitInTheBox(pair.first, 15)) {
-				cout << pair.first << " | ";
+				cout << left << setw(18) << pair.first << " | ";
 			}
 			else
 			{
@@ -22,8 +22,8 @@ void AccountDB::DisplayAccounts() {
 				//shortenName.erase(12, shortenName.length() - 12);
 				cout << shortenName << "... | ";
 			}
-			cout << pair.second.GetType() << setw(13) << " | $";
-			cout << fixed << setprecision(2) << pair.second.GetCurrency()  << " |" << endl;
+			cout << left << setw(8) << pair.second.GetType() << " | $";
+			cout << left << setw(13) << fixed << setprecision(2) << pair.second.GetCurrency() << " |" << endl;
 		}
 }
 

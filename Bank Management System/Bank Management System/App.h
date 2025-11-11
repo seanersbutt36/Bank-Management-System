@@ -19,9 +19,6 @@ public:
 	void ModifyCurrency();
 private:
 	AccountDB accDB;
-	int inputInt;
-	string inputStr;
-	float inputFlt;
 	string newName;
 	float newCurrency;
 	string selectingTypes[2] = {
