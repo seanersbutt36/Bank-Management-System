@@ -2,6 +2,7 @@
 #include "Account.h"
 
 App::App() {
+	newCurrency = 0;
 	int _inputInt = 0;
 	index = 0;
 
@@ -12,9 +13,17 @@ App::App() {
 			<< "4.  Delete an account" << endl
 			<< "5.  Quit" << endl;
 		cout << "Input Here: ";
-		cin >> _inputInt;
-		cout << endl;
-		InputSystem(_inputInt);
+
+		// Check if the input is an integer.
+		if (cin >> _inputInt) {
+			cout << endl;
+			InputSystem(_inputInt);
+		}
+		else {
+			cout << "Please select with the integer assigned." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
 		cout << endl;
 		cout << "=======================" << endl << endl;
 	}
@@ -74,7 +83,7 @@ void App::DeleteAccount() {
 
 void App::ModifyType() {
 	int _inputInt = 0;
-	bool selected = false; // Determine if the user has selected one of the options.
+	bool selected = false; // Determine to stop the while loop
 
 	// Dipslay the user's options.
 	cout << "1.  Checking" << endl
@@ -84,17 +93,26 @@ void App::ModifyType() {
 	// Keep looping until the users input one of the option.
 	while (selected == false) {
 		cout << "Input Here: ";
-		cin >> _inputInt;
-		if (_inputInt == 1) {
-			index = 0;	// Selected checking account
-			selected = true;
-		}
-		else if (_inputInt == 2) {
-			index = 1;	// Selected saving account
-			selected = true;
+		//cin >> _inputInt;
+
+		// Check if the input is an integer.
+		if (cin >> _inputInt) {
+			if (_inputInt == 1) {
+				index = 0;	// Selected checking account
+				selected = true;
+			}
+			else if (_inputInt == 2) {
+				index = 1;	// Selected saving account
+				selected = true;
+			}
+			else {
+				cout << "Please pick one of the options." << endl;
+			}
 		}
 		else {
-			cout << "Please pick one of the options." << endl;
+			cout << "Please select with the integer assigned." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		}
 	}
 }
@@ -107,6 +125,24 @@ void App::ModifyName() {
 }
 
 void App::ModifyCurrency() {
-	cout << "Input Here: $";
-	cin >> newCurrency;
+	bool selected = false; // Determine to stop the while loop
+
+	while (selected == false) {
+		cout << "Input Here: $";
+		// Check if the input is an float.
+		if (cin >> newCurrency) {
+			// Check if the input is greater than or equal to 0.
+			if (newCurrency >= 0) {
+				selected = true;
+			}
+			else {
+				newCurrency = 0;
+			}
+		}
+		else {
+			cout << "Please input a number." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+	}
 }

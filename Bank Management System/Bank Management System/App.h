@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#include <cmath>
 #include "AccountDB.h"
 
 using namespace std;
