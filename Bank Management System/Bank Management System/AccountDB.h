@@ -8,11 +8,13 @@ using namespace std;
 class AccountDB
 {
 public:
-	AccountDB();
 	void AddAccount(Account);
 	void DisplayAccounts();
+	void DisplayAccount(int);
 	bool FitInTheBox(string, int);
+	int GetLengthOfDB();
 private:
 	map<string, Account> accounts;
+	int length;
 };
 

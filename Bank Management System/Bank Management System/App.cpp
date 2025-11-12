@@ -1,3 +1,4 @@
+#include <iomanip>
 #include "App.h"
 #include "Account.h"
 
@@ -73,8 +74,11 @@ void App::ReadAccount() {
 }
 
 void App::UpdateAccount() {
-
 	cout << "Updating an account..." << endl;
+	for (int i = 0; i < accDB.GetLengthOfDB(); i++) {
+		cout << left << setw(2) << i << ") ";
+		accDB.DisplayAccount(i);
+	}
 }
 
 void App::DeleteAccount() {
