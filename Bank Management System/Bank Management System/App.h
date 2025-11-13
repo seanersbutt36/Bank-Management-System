@@ -10,6 +10,7 @@ class App
 {
 public:
 	App();
+	~App();
 	void InputSystem(int);
 	void CreateAccount();
 	void ReadAccount();

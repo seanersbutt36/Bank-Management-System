@@ -1,5 +1,5 @@
 #pragma once
-#include<map>
+#include <map>
 #include <string>
 #include "Account.h"
 
@@ -12,9 +12,7 @@ public:
 	void DisplayAccounts();
 	void DisplayAccount(int);
 	bool FitInTheBox(string, int);
-	int GetLengthOfDB();
+	size_t GetLengthOfDB();
 private:
 	map<string, Account> accounts;
-	int length;
 };
-

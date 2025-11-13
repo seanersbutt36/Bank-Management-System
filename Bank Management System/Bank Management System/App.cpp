@@ -30,6 +30,10 @@ App::App() {
 	}
 }
 
+App::~App() {
+
+}
+
 void App::InputSystem(int _input) {
 	switch (_input) {
 	case 1:

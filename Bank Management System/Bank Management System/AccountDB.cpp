@@ -64,11 +64,6 @@ bool AccountDB::FitInTheBox(string name, int max) {
 	return false;
 }
 
-int AccountDB::GetLengthOfDB() {
-	length = accounts.size();
-
-	if (!accounts.empty()) {
-		return length;
-	}
-	return 0;
+size_t AccountDB::GetLengthOfDB() {
+	return accounts.size();;
 }

@@ -31,6 +31,6 @@ Why it’s good: Demonstrates data persistence and OOP.*/
 
 int main() {
     // Run the bank management program
-    App();
+    App myApp = App();
 	return 0;
 }
