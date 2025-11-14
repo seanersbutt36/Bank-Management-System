@@ -30,10 +30,6 @@ App::App() {
 	}
 }
 
-App::~App() {
-
-}
-
 void App::InputSystem(int _input) {
 	switch (_input) {
 	case 1:
@@ -78,10 +74,34 @@ void App::ReadAccount() {
 }
 
 void App::UpdateAccount() {
+	int _inputInt = 0;
+	bool selected = false; // Determine to stop the while loop
+
 	cout << "Updating an account..." << endl;
 	for (int i = 0; i < accDB.GetLengthOfDB(); i++) {
 		cout << left << setw(2) << i << ") ";
 		accDB.DisplayAccount(i);
+	}
+
+	while (selected == false) {
+		cout << "Input Here: ";
+		//cin >> _inputInt;
+
+		// Check if the input is an integer.
+		if (cin >> _inputInt) {
+			if (_inputInt < accDB.GetLengthOfDB()) {
+				accDB.DisplayAccount(_inputInt - 1);
+				selected = true;
+			}
+			else {
+				cout << "This option doesn't exist." << endl;
+			}
+		}
+		else {
+			cout << "Please select with the integer assigned." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
 	}
 }
 

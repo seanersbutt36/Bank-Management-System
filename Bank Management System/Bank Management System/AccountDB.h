@@ -11,6 +11,7 @@ public:
 	void AddAccount(Account);
 	void DisplayAccounts();
 	void DisplayAccount(int);
+	Account GetAccount(int);
 	bool FitInTheBox(string, int);
 	size_t GetLengthOfDB();
 private:

@@ -50,6 +50,22 @@ void AccountDB::DisplayAccount(int _index) {
 	}
 }
 
+/*Account AccountDB::GetAccount(int _index) {
+	int counter = 0;
+
+	for (auto& pair : accounts) {
+		if (counter == _index) {
+			cout << "1.  " << pair.first << endl;
+			cout << left << setw(8) << pair.second.GetType() << " | $";
+			cout << left << setw(13) << fixed << setprecision(2) << pair.second.GetCurrency() << " |" << endl;
+			break;
+		}
+		else {
+			counter++;
+		}
+	}
+}*/
+
 bool AccountDB::FitInTheBox(string name, int max) {
 	int count = 0;
 
